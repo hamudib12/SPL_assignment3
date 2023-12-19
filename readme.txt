@@ -161,3 +161,5 @@ An echo client is provided but is a single-threaded client. Improve the client t
 The client should receive commands using standard input. Translate keyboard commands to network messages and vice versa according to the specifications. The client should close itself upon receiving an ACK message in response to an outgoing LOGOUT command.
 
 #### Testing Run Command
+
+`BGSclient <ip> <port>`
