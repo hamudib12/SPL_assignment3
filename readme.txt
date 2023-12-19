@@ -1,5 +1,3 @@
-Certainly! Below is an example README file for your Ben Gurion Social (BGS) Social Network Server and Client. Please replace placeholder text with your actual content:
-
 ```markdown
 # Ben Gurion Social (BGS) - Social Network Server and Client
 
