@@ -160,6 +160,96 @@ An echo client is provided but is a single-threaded client. Improve the client t
 
 The client should receive commands using standard input. Translate keyboard commands to network messages and vice versa according to the specifications. The client should close itself upon receiving an ACK message in response to an outgoing LOGOUT command.
 
-#### Testing Run Command
+### GUIDE TO RUN OUR CODE
 
-`BGSclient <ip> <port>`
+#### ThreadPerClient Server:
+
+1. **Clean and Compile:**
+   ```
+   mvn clean
+   mvn compile
+   ```
+
+2. **Run Server:**
+   ```
+   mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.BGSServer.TPCMain" -Dexec.args="7777"
+   ```
+
+#### Reactor Server:
+
+1. **Clean and Compile:**
+   ```
+   mvn clean 
+   mvn compile
+   ```
+
+2. **Run Server:**
+   ```
+   mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.BGSServer.ReactorMain" -Dexec.args="7777 10"
+   ```
+
+#### Client:
+
+1. **Build Client:**
+   ```
+   make clean all
+   ```
+
+2. **Run Client:**
+   ```
+   ./bin/BGSclient 127.0.0.1 7777
+   ```
+
+#### Input Corrections:
+
+- **Date Format:** DD-MM-YYYY
+
+- **Filtered Messages Editing:**
+  To edit filtered messages, go to: `./Server/src/main/java/bgu/spl/net/api/bidi/ConnectionsImpl.java`
+
+#### Example of Correctly Formatted Commands:
+
+1. **REGISTER Message:**
+   ```
+   REGISTER <Username> <Password> <DD-MM-YYYY>
+   ```
+
+2. **LOGIN Message:**
+   ```
+   LOGIN <Username> <Password> <Captcha: 0 for "failure" 1 for "success">
+   ```
+
+3. **FOLLOW Message:**
+   ```
+   FOLLOW <0/1 (Follow/Unfollow)> <UserName>
+   ```
+
+4. **POST Message:**
+   ```
+   POST <PostMsg(Content)>
+   ```
+
+5. **PM Message:**
+   ```
+   PM <Username> <Content>
+   ```
+
+6. **LOGSTAT Message:**
+   ```
+   LOGSTAT
+   ```
+
+7. **STAT Message:**
+   ```
+   STAT usernam1|username2|username3|...
+   ```
+
+8. **LOGOUT Message:**
+   ```
+   LOGOUT
+   ```
+
+9. **BLOCK Message:**
+   ```
+   BLOCK <UserName to block>
+   ```
